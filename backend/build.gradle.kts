@@ -19,17 +19,39 @@ dependencies {
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
-kotlin { jvmToolchain(21) }
-application { mainClass = "no.javatec.ApplicationKt" }
+kotlin {
+    jvmToolchain(21)
+    compilerOptions {
+        freeCompilerArgs
+            .addAll(
+                "-Xjsr305=strict",
+                "-Xannotation-default-target=param-property"
+            )
+    }
+}
+
+application {
+    mainClass = "no.javatec.ApplicationKt"
+}
 
 micronaut {
-    version = libs.versions.micronautPlatform
+    version = libs.versions.micronaut.platform.version.get()
     runtime("netty")
     testRuntime("kotest5")
     processing {
         incremental(true)
         annotations("no.javatec.*")
     }
+}
+
+tasks.test {
+    jvmArgs(
+        "-Xshare:off",
+        "-XX:+EnableDynamicAgentLoading",
+        "-Dkotest.framework.classpath.scanning.autoscan.disable=true",
+        "-Dkotest.framework.config.fqn=no.javatec.ProjectConfig",
+    )
+    useJUnitPlatform()
 }
 
 tasks.register<Copy>("processFrontendResources") {

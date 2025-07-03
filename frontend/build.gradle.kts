@@ -1,5 +1,5 @@
 plugins {
-    id("org.siouan.frontend-jdk21") version "10.0.0"
+    alias(libs.plugins.frontend.jdk21)
 }
 
 frontend {
