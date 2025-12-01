@@ -1,7 +1,7 @@
 [versions]
 micronaut-platform-version = "4.10.2"
 kotlin-version = "2.2.0"
-devtools-ksp-version = "2.2.0-2.0.2"
+devtools-ksp-version = "2.3.3"
 micronaut-application-version = "4.5.4"
 frontend-jdk21-version = "10.0.0"
 
