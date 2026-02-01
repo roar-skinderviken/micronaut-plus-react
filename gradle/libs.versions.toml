@@ -1,5 +1,5 @@
 [versions]
-micronaut-platform-version = "4.10.6"
+micronaut-platform-version = "4.10.7"
 kotlin-version = "2.3.0"
 devtools-ksp-version = "2.3.4"
 micronaut-application-version = "4.6.1"
